@@ -1,0 +1,68 @@
+export const adminSeed = {
+  projects: [
+    {
+      id: 'sample-river-garden',
+      name: 'Sample River Garden',
+      slug: 'sample-river-garden',
+      location: 'Mira Road East',
+      status: 'Launching Soon',
+      configuration: '1, 2 & 3 BHK Apartments',
+      startingPrice: '₹64 Lakhs*',
+      developer: 'Sample Developer Group',
+      possession: 'Sample Timeline',
+      overview: 'Placeholder content to be replaced with real project details.',
+      highlights: ['Local convenience', 'Premium residences', 'Family-friendly living'],
+      amenities: ['Clubhouse', 'Security', 'Garden', 'Parking'],
+      gallery: ['https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80'],
+      image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80',
+    },
+  ],
+  properties: [
+    {
+      id: 'sample-2-bhk-bhayandar',
+      title: '2 BHK Apartment in Mira Road East',
+      location: 'Mira Road East, Maharashtra',
+      price: '₹78 Lakhs',
+      configuration: '2 BHK',
+      carpetArea: '740 sq ft',
+      floor: '6th Floor',
+      totalFloors: '12',
+      parking: '1 Covered Parking',
+      furnishing: 'Semi-Furnished',
+      propertyAge: '5 Years',
+      type: 'Residential',
+      status: 'Ready to Move',
+      description: 'Placeholder listing pending real property details.',
+      image: 'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80',
+      gallery: ['https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80'],
+    },
+  ],
+  blogPosts: [
+    {
+      id: 'buying-resale-flat',
+      slug: 'things-to-check-before-buying-a-resale-flat',
+      title: 'Things to Check Before Buying a Resale Flat',
+      category: 'Buying Guidance',
+      excerpt: 'Placeholder blog content for future local insights.',
+      readTime: '4 min read',
+      publishedAt: '2026-09-01',
+      image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=900&q=80',
+    },
+  ],
+  reviews: [
+    {
+      id: 'review-1',
+      quote: 'Good people to work with, experience in real estate is excellent.',
+      author: 'Client Feedback',
+      rating: 5,
+    },
+  ],
+  services: [
+    {
+      id: 'residential-properties',
+      title: 'Residential Properties',
+      description: 'Placeholder service copy pending final business update.',
+      link: '/properties',
+    },
+  ],
+}

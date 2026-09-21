@@ -1,0 +1,77 @@
+export const sampleProperties = [
+  {
+    id: 'sample-2-bhk-bhayandar',
+    title: '2 BHK Apartment in Mira Road East',
+    location: 'Mira Road East, Maharashtra',
+    price: '₹78 Lakhs',
+    configuration: '2 BHK',
+    carpetArea: '740 sq ft',
+    floor: '6th Floor',
+    totalFloors: '12',
+    parking: '1 Covered Parking',
+    furnishing: 'Semi-Furnished',
+    propertyAge: '5 Years',
+    type: 'Residential',
+    status: 'Ready to Move',
+    description:
+      'Sample property listing created to show the buyer journey and property detail template. Replace this with the real property information once available.',
+    image:
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=80',
+    ],
+    highlighted: true,
+  },
+  {
+    id: 'sample-1-bhk-kashimira',
+    title: '1 BHK Residence in Kashimira',
+    location: 'Kashimira, Mira Bhayandar',
+    price: '₹42 Lakhs',
+    configuration: '1 BHK',
+    carpetArea: '540 sq ft',
+    floor: '3rd Floor',
+    totalFloors: '8',
+    parking: '1 Open Parking',
+    furnishing: 'Unfurnished',
+    propertyAge: '8 Years',
+    type: 'Residential',
+    status: 'Resale',
+    description:
+      'This sample listing is intended to demonstrate the property layout for a property in the local area with a practical budget.',
+    image:
+      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=900&q=80',
+    ],
+    highlighted: false,
+  },
+  {
+    id: 'sample-commercial-office',
+    title: 'Commercial Office Space in Mira Road West',
+    location: 'Mira Road West, Maharashtra',
+    price: '₹1.15 Cr',
+    configuration: 'Office Space',
+    carpetArea: '980 sq ft',
+    floor: '2nd Floor',
+    totalFloors: '6',
+    parking: '2 Parking Spaces',
+    furnishing: 'Furnished',
+    propertyAge: 'New',
+    type: 'Commercial',
+    status: 'Available',
+    description:
+      'Sample commercial property representation for a premium office or retail opportunity in the local area. Replace with actual listing details later.',
+    image:
+      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
+    gallery: [
+      'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=900&q=80',
+      'https://images.unsplash.com/photo-1451976426598-a7593bd6d0b2?auto=format&fit=crop&w=900&q=80',
+    ],
+    highlighted: true,
+  },
+]
