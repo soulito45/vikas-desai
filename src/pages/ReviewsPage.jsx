@@ -1,8 +1,10 @@
 import SectionHeading from '../components/SectionHeading'
 import ReviewCard from '../components/ReviewCard'
-import { reviews, businessRating } from '../data/reviews'
+import { businessRating } from '../data/reviews'
+import { useContent } from '../context/ContentContext'
 
 export default function ReviewsPage() {
+  const { reviews } = useContent()
   return (
     <main className="page-shell container">
       <SectionHeading

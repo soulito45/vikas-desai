@@ -15,9 +15,11 @@ import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
 import ContactPage from './pages/ContactPage'
 import AdminDashboardPage from './pages/AdminDashboardPage'
+import { ContentProvider } from './context/ContentContext'
 
 function App() {
   return (
+    <ContentProvider>
     <BrowserRouter>
       <div className="app-shell">
         <Navbar />
@@ -39,6 +41,7 @@ function App() {
         <Footer />
       </div>
     </BrowserRouter>
+    </ContentProvider>
   )
 }
 

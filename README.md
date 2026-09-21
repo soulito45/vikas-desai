@@ -1,5 +1,13 @@
 # React + Vite
 
+## Running securely
+
+1. Copy `.env.example` to `.env` and set a long, unique `ADMIN_PASSWORD`.
+2. Start both services with `npm run dev:all`.
+3. Open `/admin` and sign in with that password. Content saved from the dashboard is served to the public pages after their next refresh.
+
+For production, serve the frontend and `/api` from the same HTTPS origin, set `NODE_ENV=production`, and set `FRONTEND_ORIGIN` to the exact public site URL. The included server stores content, sessions, and leads in memory only; replace these arrays with a database before deployment so restarts do not lose data and multiple server instances stay consistent.
+
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
 
 Currently, two official plugins are available:

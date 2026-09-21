@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0",
-    "server": "node server/index.js",
+    "dev": "vite --host 0.0.0.0 --configLoader runner",
+    "server": "node --env-file-if-exists=.env server/index.js",
     "dev:all": "concurrently \"npm run server\" \"npm run dev\"",
     "build": "vite build",
     "lint": "oxlint",

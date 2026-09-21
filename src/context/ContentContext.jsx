@@ -1,0 +1,24 @@
+import { createContext, useContext, useEffect, useState } from 'react'
+import { adminSeed } from '../data/adminSeed'
+import { apiRequest } from '../services/api'
+import { services as serviceDefinitions } from '../data/services'
+
+const ContentContext = createContext(adminSeed)
+
+function withServiceIcons(content) {
+  return {
+    ...content,
+    services: content.services.map((service) => ({
+      ...service,
+      icon: serviceDefinitions.find((definition) => definition.id === service.id)?.icon || serviceDefinitions[0].icon,
+    })),
+  }
+}
+
+export function ContentProvider({ children }) {
+  const [content, setContent] = useState(() => withServiceIcons(adminSeed))
+  useEffect(() => { apiRequest('/content').then((data) => setContent(withServiceIcons(data))).catch(() => {}) }, [])
+  return <ContentContext.Provider value={content}>{children}</ContentContext.Provider>
+}
+
+export const useContent = () => useContext(ContentContext)

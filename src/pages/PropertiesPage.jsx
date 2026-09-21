@@ -1,9 +1,10 @@
 import PropertyCard from '../components/PropertyCard'
 import SectionHeading from '../components/SectionHeading'
 import PropertySearch from '../components/PropertySearch'
-import { sampleProperties } from '../data/properties'
+import { useContent } from '../context/ContentContext'
 
 export default function PropertiesPage() {
+  const { properties } = useContent()
   return (
     <main className="page-shell container">
       <SectionHeading
@@ -15,7 +16,7 @@ export default function PropertiesPage() {
       <PropertySearch />
 
       <div className="card-grid three-col properties-grid">
-        {sampleProperties.map((property) => (
+        {properties.map((property) => (
           <PropertyCard key={property.id} property={property} />
         ))}
       </div>

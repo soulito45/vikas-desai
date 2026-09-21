@@ -1,9 +1,10 @@
 import SectionHeading from '../components/SectionHeading'
 import ServiceCard from '../components/ServiceCard'
 import CTASection from '../components/CTASection'
-import { services } from '../data/services'
+import { useContent } from '../context/ContentContext'
 
 export default function ServicesPage() {
+  const { services } = useContent()
   return (
     <main className="page-shell container">
       <SectionHeading

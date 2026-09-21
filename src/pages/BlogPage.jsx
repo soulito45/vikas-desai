@@ -1,8 +1,9 @@
 import BlogCard from '../components/BlogCard'
 import SectionHeading from '../components/SectionHeading'
-import { blogPosts } from '../data/blog'
+import { useContent } from '../context/ContentContext'
 
 export default function BlogPage() {
+  const { blogPosts } = useContent()
   return (
     <main className="page-shell container">
       <SectionHeading

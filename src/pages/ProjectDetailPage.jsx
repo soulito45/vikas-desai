@@ -1,12 +1,13 @@
-import { ArrowRight, Building, CalendarRange, CheckCircle2, MapPin, MessageCircleMore, Phone } from 'lucide-react'
+import { Building, CalendarRange, CheckCircle2, MapPin, MessageCircleMore, Phone } from 'lucide-react'
 import { useParams } from 'react-router-dom'
 import ImageGallery from '../components/ImageGallery'
 import CTASection from '../components/CTASection'
-import { sampleProjects } from '../data/projects'
+import { useContent } from '../context/ContentContext'
 
 export default function ProjectDetailPage() {
   const { id } = useParams()
-  const project = sampleProjects.find((item) => item.id === id) || sampleProjects[0]
+  const { projects } = useContent()
+  const project = projects.find((item) => item.id === id) || projects[0]
 
   return (
     <main className="page-shell container project-detail-page">

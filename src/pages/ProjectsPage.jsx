@@ -1,8 +1,9 @@
 import ProjectCard from '../components/ProjectCard'
 import SectionHeading from '../components/SectionHeading'
-import { sampleProjects } from '../data/projects'
+import { useContent } from '../context/ContentContext'
 
 export default function ProjectsPage() {
+  const { projects } = useContent()
   return (
     <main className="page-shell container">
       <SectionHeading
@@ -12,7 +13,7 @@ export default function ProjectsPage() {
       />
 
       <div className="card-grid three-col">
-        {sampleProjects.map((project) => (
+        {projects.map((project) => (
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>

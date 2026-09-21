@@ -2,11 +2,12 @@ import { MapPin, Phone, CalendarRange, Building, Ruler, BedDouble, CarFront, Hom
 import { useParams } from 'react-router-dom'
 import ImageGallery from '../components/ImageGallery'
 import CTASection from '../components/CTASection'
-import { sampleProperties } from '../data/properties'
+import { useContent } from '../context/ContentContext'
 
 export default function PropertyDetailPage() {
   const { id } = useParams()
-  const property = sampleProperties.find((item) => item.id === id) || sampleProperties[0]
+  const { properties } = useContent()
+  const property = properties.find((item) => item.id === id) || properties[0]
 
   return (
     <main className="page-shell container property-detail-page">

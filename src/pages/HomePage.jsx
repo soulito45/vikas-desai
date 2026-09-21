@@ -1,5 +1,4 @@
-import { ArrowRight, BadgeCheck, Building2, Building, Home, Landmark, MapPinned, PhoneCall } from 'lucide-react'
-import { Link } from 'react-router-dom'
+import { BadgeCheck, Building2, Building, Home, Landmark, MapPinned, PhoneCall } from 'lucide-react'
 import Hero from '../components/Hero'
 import PropertySearch from '../components/PropertySearch'
 import SectionHeading from '../components/SectionHeading'
@@ -10,11 +9,9 @@ import ReviewCard from '../components/ReviewCard'
 import AreaCard from '../components/AreaCard'
 import CTASection from '../components/CTASection'
 import PageShell from './PageShell'
-import { sampleProjects } from '../data/projects'
-import { sampleProperties } from '../data/properties'
-import { services } from '../data/services'
-import { reviews, businessRating } from '../data/reviews'
+import { businessRating } from '../data/reviews'
 import { areas } from '../data/areas'
+import { useContent } from '../context/ContentContext'
 
 const trustPoints = [
   '18+ Years Local Experience',
@@ -26,6 +23,7 @@ const trustPoints = [
 ]
 
 export default function HomePage() {
+  const { projects, properties, services, reviews } = useContent()
   return (
     <PageShell
       title="Vikas U Desai Real Estate & Finance Consultancy | Mira Road East"
@@ -58,7 +56,7 @@ export default function HomePage() {
             subtitle="These cards are intentionally placeholder-based so real projects can be added without redesigning the layout."
           />
           <div className="card-grid three-col">
-            {sampleProjects.map((project) => (
+            {projects.map((project) => (
               <ProjectCard key={project.id} project={project} />
             ))}
           </div>
@@ -188,7 +186,7 @@ export default function HomePage() {
             title="A few representation listings to show the property experience layout."
           />
           <div className="card-grid three-col">
-            {sampleProperties.map((property) => (
+            {properties.map((property) => (
               <div key={property.id}>
                 <PropertyCard property={property} />
               </div>

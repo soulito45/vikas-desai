@@ -1,11 +1,12 @@
 import { useParams } from 'react-router-dom'
 import SectionHeading from '../components/SectionHeading'
 import CTASection from '../components/CTASection'
-import { blogPosts } from '../data/blog'
+import { useContent } from '../context/ContentContext'
 import PageShell from './PageShell'
 
 export default function BlogPostPage() {
   const { slug } = useParams()
+  const { blogPosts } = useContent()
   const post = blogPosts.find((item) => item.slug === slug) || blogPosts[0]
 
   return (
