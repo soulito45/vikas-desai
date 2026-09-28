@@ -74,7 +74,7 @@ export default function PropertyDetailPage() {
 
       <CTASection
         title="Interested in this property?"
-        text="Connect with the consultancy to learn more, arrange a visit, or discuss financing options."
+        text="Connect with the consultancy to learn more, arrange a visit, or discuss financing options for your next move."
         primaryLabel="WhatsApp now"
         primaryTo="https://wa.me/919920133345"
       />

@@ -10,7 +10,7 @@ export default function PropertiesPage() {
       <SectionHeading
         eyebrow="Properties"
         title="Property opportunities for buyers, sellers and investors."
-        subtitle="This page is structured to later support live listings, valued pricing, and detailed property pages for each property."
+        subtitle="Explore selected residential and commercial opportunities across Mira Road East and nearby communities. Contact the consultancy to confirm availability and arrange a viewing."
       />
 
       <PropertySearch />

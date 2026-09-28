@@ -29,7 +29,7 @@ export default function ContactPage() {
           </div>
           <div className="card map-card">
             <h3>Location</h3>
-            <div className="map-placeholder">Google Maps placeholder - add embed later.</div>
+            <div className="map-placeholder">Local office support for buyers and sellers across Mira Road East, Kashimira, and surrounding areas.</div>
           </div>
         </div>
 

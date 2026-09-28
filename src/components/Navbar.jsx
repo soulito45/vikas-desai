@@ -1,4 +1,5 @@
-import { Menu, Phone, MessageCircleMore } from 'lucide-react'
+import { useState } from 'react'
+import { Menu, Phone, MessageCircleMore, X } from 'lucide-react'
 import { Link, NavLink } from 'react-router-dom'
 
 const links = [
@@ -16,6 +17,8 @@ const navClass = ({ isActive }) =>
   `nav-link ${isActive ? 'active' : ''}`
 
 export default function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false)
+
   return (
     <header className="site-header">
       <div className="container nav-shell">
@@ -44,10 +47,26 @@ export default function Navbar() {
             <MessageCircleMore size={16} />
             WhatsApp
           </a>
-          <button type="button" className="menu-button" aria-label="Open menu">
-            <Menu size={18} />
+          <button
+            type="button"
+            className="menu-button"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-site-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X size={19} /> : <Menu size={19} />}
           </button>
         </div>
+        {menuOpen ? (
+          <nav id="mobile-site-navigation" className="mobile-nav" aria-label="Mobile navigation">
+            {links.map((link) => (
+              <NavLink key={link.to} to={link.to} className={navClass} onClick={() => setMenuOpen(false)}>
+                {link.label}
+              </NavLink>
+            ))}
+          </nav>
+        ) : null}
       </div>
     </header>
   )

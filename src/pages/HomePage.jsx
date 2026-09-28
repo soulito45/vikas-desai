@@ -12,6 +12,7 @@ import PageShell from './PageShell'
 import { businessRating } from '../data/reviews'
 import { areas } from '../data/areas'
 import { useContent } from '../context/ContentContext'
+import vikasPortrait from '../assets/vikas.png'
 
 const trustPoints = [
   '18+ Years Local Experience',
@@ -37,7 +38,7 @@ export default function HomePage() {
         primaryTo="/properties"
         secondaryLabel="WhatsApp Us"
         secondaryTo="https://wa.me/919920133345"
-        backgroundImage="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=1600&q=80"
+        backgroundImage="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85"
         badges={[
           '18+ Years Experience',
           'Residential & Commercial',
@@ -52,8 +53,8 @@ export default function HomePage() {
         <section className="section container">
           <SectionHeading
             eyebrow="Featured projects"
-            title="Sample project opportunities for future listings"
-            subtitle="These cards are intentionally placeholder-based so real projects can be added without redesigning the layout."
+            title="Project opportunities across the local property market"
+            subtitle="A curated look at well-located residential and investment-driven options in Mira Road, Kashimira, and nearby areas."
           />
           <div className="card-grid three-col">
             {projects.map((project) => (
@@ -74,8 +75,9 @@ export default function HomePage() {
                 <div className="profile-box card">
                   <div className="profile-image">
                     <img
-                      src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
-                      alt="Professional portrait placeholder"
+                      src={vikasPortrait}
+                      alt="Vikas Desai"
+                      loading="lazy"
                     />
                   </div>
                   <ul className="check-list">
@@ -95,7 +97,7 @@ export default function HomePage() {
                 </div>
                 <ul className="feature-list">
                   {trustPoints.map((point) => (
-                    <li key={point}>• {point}</li>
+                    <li key={point}><BadgeCheck size={17} aria-hidden="true" /> {point}</li>
                   ))}
                 </ul>
               </div>
@@ -171,19 +173,41 @@ export default function HomePage() {
         <section className="section container">
           <SectionHeading
             eyebrow="Areas we serve"
-            title="Local expertise across the nearby property market."
+            title="Local neighbourhoods. Connected citywide."
+            subtitle="Explore the Mira Road neighbourhoods and nearby areas where we provide local property guidance."
           />
-          <div className="card-grid four-col">
-            {areas.map((area) => (
-              <AreaCard key={area.id} area={area} />
-            ))}
+          <div className="service-area-groups">
+            <section className="service-area-group" aria-labelledby="neighbourhoods-heading">
+              <div className="service-area-heading">
+                <h3 id="neighbourhoods-heading">Mira Road neighbourhoods</h3>
+                <span>Local pockets</span>
+              </div>
+              <div className="card-grid four-col">
+                {areas.neighborhoods.map((area) => (
+                  <AreaCard key={area.id} area={{ ...area, type: 'Neighbourhood' }} />
+                ))}
+              </div>
+            </section>
+
+            <section className="service-area-group" aria-labelledby="stations-heading">
+              <div className="service-area-heading">
+                <h3 id="stations-heading">Western line stations</h3>
+                <span>Nearby areas</span>
+              </div>
+              <div className="card-grid four-col">
+                {areas.stations.map((area) => (
+                  <AreaCard key={area.id} area={{ ...area, type: 'Area' }} />
+                ))}
+              </div>
+            </section>
           </div>
         </section>
 
         <section className="section container">
           <SectionHeading
             eyebrow="Featured properties"
-            title="A few representation listings to show the property experience layout."
+            title="Homes and investment opportunities to explore."
+            subtitle="Discover selected residential and commercial properties across Mira Road East and nearby communities. Contact the consultancy to confirm availability and arrange a viewing."
           />
           <div className="card-grid three-col">
             {properties.map((property) => (

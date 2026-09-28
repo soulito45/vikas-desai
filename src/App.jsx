@@ -1,8 +1,10 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import './App.css'
+import './public-theme.css'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
+import AppointmentModal from './components/AppointmentModal'
 import HomePage from './pages/HomePage'
 import AboutPage from './pages/AboutPage'
 import PropertiesPage from './pages/PropertiesPage'
@@ -17,30 +19,40 @@ import ContactPage from './pages/ContactPage'
 import AdminDashboardPage from './pages/AdminDashboardPage'
 import { ContentProvider } from './context/ContentContext'
 
+function AppShell() {
+  const location = useLocation()
+  const isAdminRoute = location.pathname.startsWith('/admin')
+
+  return (
+    <div className={`app-shell ${isAdminRoute ? 'admin-app-shell' : 'public-app-shell'}`}>
+      {!isAdminRoute && <Navbar />}
+      {!isAdminRoute && <AppointmentModal />}
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/properties" element={<PropertiesPage />} />
+        <Route path="/properties/:id" element={<PropertyDetailPage />} />
+        <Route path="/projects" element={<ProjectsPage />} />
+        <Route path="/projects/:id" element={<ProjectDetailPage />} />
+        <Route path="/services" element={<ServicesPage />} />
+        <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogPostPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/admin" element={<AdminDashboardPage />} />
+      </Routes>
+      {!isAdminRoute && <WhatsAppButton title="Vikas U Desai Real Estate & Finance Consultancy" />}
+      {!isAdminRoute && <Footer />}
+    </div>
+  )
+}
+
 function App() {
   return (
     <ContentProvider>
-    <BrowserRouter>
-      <div className="app-shell">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/about" element={<AboutPage />} />
-          <Route path="/properties" element={<PropertiesPage />} />
-          <Route path="/properties/:id" element={<PropertyDetailPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/projects/:id" element={<ProjectDetailPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/reviews" element={<ReviewsPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/blog/:slug" element={<BlogPostPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-          <Route path="/admin" element={<AdminDashboardPage />} />
-        </Routes>
-        <WhatsAppButton title="Vikas U Desai Real Estate & Finance Consultancy" />
-        <Footer />
-      </div>
-    </BrowserRouter>
+      <BrowserRouter>
+        <AppShell />
+      </BrowserRouter>
     </ContentProvider>
   )
 }

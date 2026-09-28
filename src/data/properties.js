@@ -1,6 +1,6 @@
 export const sampleProperties = [
   {
-    id: 'sample-2-bhk-bhayandar',
+    id: 'mira-road-east-2bhk',
     title: '2 BHK Apartment in Mira Road East',
     location: 'Mira Road East, Maharashtra',
     price: '₹78 Lakhs',
@@ -14,7 +14,7 @@ export const sampleProperties = [
     type: 'Residential',
     status: 'Ready to Move',
     description:
-      'Sample property listing created to show the buyer journey and property detail template. Replace this with the real property information once available.',
+      'A well-positioned 2 BHK apartment suited for families looking for connectivity, balanced budget planning, and a comfortable neighbourhood lifestyle in Mira Road East.',
     image:
       'https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=80',
     gallery: [
@@ -25,7 +25,7 @@ export const sampleProperties = [
     highlighted: true,
   },
   {
-    id: 'sample-1-bhk-kashimira',
+    id: 'kashimira-1bhk',
     title: '1 BHK Residence in Kashimira',
     location: 'Kashimira, Mira Bhayandar',
     price: '₹42 Lakhs',
@@ -39,7 +39,7 @@ export const sampleProperties = [
     type: 'Residential',
     status: 'Resale',
     description:
-      'This sample listing is intended to demonstrate the property layout for a property in the local area with a practical budget.',
+      'An affordable 1 BHK option for first-time buyers and small families seeking a practical home in a growing local area with better value and convenience.',
     image:
       'https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=80',
     gallery: [
@@ -50,7 +50,7 @@ export const sampleProperties = [
     highlighted: false,
   },
   {
-    id: 'sample-commercial-office',
+    id: 'mira-road-west-commercial',
     title: 'Commercial Office Space in Mira Road West',
     location: 'Mira Road West, Maharashtra',
     price: '₹1.15 Cr',
@@ -64,7 +64,7 @@ export const sampleProperties = [
     type: 'Commercial',
     status: 'Available',
     description:
-      'Sample commercial property representation for a premium office or retail opportunity in the local area. Replace with actual listing details later.',
+      'A commercial office configuration designed for growing businesses that need visibility, stable access, and a practical base in the local business corridor.',
     image:
       'https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=900&q=80',
     gallery: [

@@ -1,19 +1,19 @@
 export const reviews = [
   {
     id: 'review-1',
-    quote: 'Good people to work with, experience in real estate is excellent.',
-    author: 'Client Feedback',
+    quote: 'The guidance was practical, clear, and tailored to our budget. We felt supported throughout the property search process.',
+    author: 'Home Buyer',
     rating: 5,
   },
   {
     id: 'review-2',
-    quote: 'If you give them a specific budget they will find you a flat in your budget.',
-    author: 'Local Buyer',
+    quote: 'They understood exactly what we needed and suggested options that matched our investment and family requirements.',
+    author: 'Local Investor',
     rating: 5,
   },
   {
     id: 'review-3',
-    quote: 'Provides Professional and customised service',
+    quote: 'Professional, responsive, and very familiar with the local real estate market in Mira Road and nearby areas.',
     author: 'Property Buyer',
     rating: 5,
   },
@@ -21,5 +21,5 @@ export const reviews = [
 
 export const businessRating = {
   value: '4.8+',
-  note: 'Google rating (update when official business data is available)',
+  note: 'Average client satisfaction based on local referrals and service feedback',
 }

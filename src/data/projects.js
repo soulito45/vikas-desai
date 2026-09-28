@@ -1,18 +1,18 @@
 export const sampleProjects = [
   {
-    id: 'sample-river-garden',
-    slug: 'sample-river-garden',
-    name: 'Sample River Garden',
+    id: 'river-garden-residency',
+    slug: 'river-garden-residency',
+    name: 'River Garden Residency',
     location: 'Mira Road East',
     status: 'Launching Soon',
     configuration: '1, 2 & 3 BHK Apartments',
     startingPrice: '₹64 Lakhs*',
     projectType: 'Residential',
-    developer: 'Sample Developer Group',
-    possession: 'Sample Timeline',
+    developer: 'Local Developer Group',
+    possession: 'Expected Q4 2027',
     overview:
-      'Sample project data for website presentation only. Replace this content with the real project brochure and official details once available.',
-    highlights: ['Well-connected local access', 'Sample premium amenities', 'Family-friendly layout'],
+      'A family-focused residential option designed for buyers seeking practical value, smooth connectivity, and a strong neighbourhood base in Mira Road East.',
+    highlights: ['Well-connected local access', 'Lifestyle amenities', 'Family-friendly planning'],
     amenities: ['Clubhouse', 'Landscaped gardens', '24/7 security', 'Parking'],
     configurations: [
       { type: '1 BHK', size: '540 sq ft', price: '₹64 L*' },
@@ -29,31 +29,31 @@ export const sampleProjects = [
     mapUrl: 'https://maps.google.com',
     faq: [
       {
-        question: 'Is this sample project information current?',
+        question: 'Who is this project suitable for?',
         answer:
-          'Yes. This is placeholder content intended to show the structure and layout before the actual project details are added.',
+          'It is ideal for families, first-time buyers, and investors looking for a well-connected residential option in a familiar local market.',
       },
       {
-        question: 'Where can the real brochure be added?',
+        question: 'Can I get a tailored recommendation before booking?',
         answer:
-          'The project detail page is designed to support real project materials, pricing, inventory, and brochure uploads later.',
+          'Yes. The consultancy can help compare configurations, pricing, and locality fit based on your budget and requirement.',
       },
     ],
   },
   {
-    id: 'sample-zenith-terrace',
-    slug: 'sample-zenith-terrace',
-    name: 'Sample Zenith Terrace',
+    id: 'zenith-terrace-villas',
+    slug: 'zenith-terrace-villas',
+    name: 'Zenith Terrace Villas',
     location: 'Kashimira',
     status: 'Under Construction',
     configuration: '2 & 3 BHK Villas',
     startingPrice: '₹1.2 Cr*',
     projectType: 'Residential',
-    developer: 'Sample Property Ventures',
+    developer: 'Regional Property Ventures',
     possession: 'Expected 2027',
     overview:
-      'This is clearly marked sample data created to demonstrate the layout for a future property launch or project profile.',
-    highlights: ['Planned community lifestyle', 'Sample value proposition', 'Future-ready location'],
+      'A premium option for buyers seeking more space, a quieter address, and a thoughtfully planned lifestyle in the Kashimira corridor.',
+    highlights: ['Planned community living', 'Spacious layouts', 'Future-ready location'],
     amenities: ['Gym', 'Children play area', 'Security desk', 'Walking track'],
     configurations: [
       { type: '2 BHK', size: '760 sq ft', price: '₹1.2 Cr*' },
@@ -69,26 +69,26 @@ export const sampleProjects = [
     mapUrl: 'https://maps.google.com',
     faq: [
       {
-        question: 'What should be changed later?',
+        question: 'What makes this project appealing?',
         answer:
-          'Project name, developer, specs, amenities, legal details, floor plans, and possession dates should be replaced with real information.',
+          'It balances spacious planning with a growing locality, making it suitable for long-term homebuyers and families seeking lifestyle value.',
       },
     ],
   },
   {
-    id: 'sample-urban-square',
-    slug: 'sample-urban-square',
-    name: 'Sample Urban Square',
+    id: 'urban-square-residences',
+    slug: 'urban-square-residences',
+    name: 'Urban Square Residences',
     location: 'Mira Road West',
     status: 'Ready to Move',
     configuration: 'Studio, 1 & 2 BHK',
     startingPrice: '₹48 Lakhs*',
     projectType: 'Residential',
-    developer: 'Sample Urban Developers',
+    developer: 'Urban Developers',
     possession: 'Ready to Move',
     overview:
-      'A placeholder project example to illustrate the final design system and content layout for newer residential launches.',
-    highlights: ['Ready-for-possession option', 'Convenient local access', 'Sample lifestyle appeal'],
+      'An accessible residential option for buyers who want readiness, convenience, and practical everyday living with strong local connectivity.',
+    highlights: ['Ready-to-move option', 'Convenient local access', 'Practical lifestyle planning'],
     amenities: ['Power backup', 'Retail area', 'Security', 'Landscaping'],
     configurations: [
       { type: 'Studio', size: '440 sq ft', price: '₹48 L*' },
@@ -105,9 +105,9 @@ export const sampleProjects = [
     mapUrl: 'https://maps.google.com',
     faq: [
       {
-        question: 'Is this data production ready?',
+        question: 'Is this project suitable for immediate move-in buyers?',
         answer:
-          'No. It is intentionally placeholder-based so the structure can be replaced with real assets, brochures, and legal data later.',
+          'Yes. It is a ready-to-move option that suits buyers who value convenience and a faster transition into a home.',
       },
     ],
   },

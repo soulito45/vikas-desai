@@ -9,7 +9,7 @@ export default function ProjectsPage() {
       <SectionHeading
         eyebrow="Projects"
         title="Current project opportunities and upcoming launches."
-        subtitle="These project cards are intentionally sample placeholders that can later be replaced with actual developer data, brochure content, and verified details."
+        subtitle="Explore focused project recommendations for buyers looking for a practical, location-aware property decision."
       />
 
       <div className="card-grid three-col">

@@ -107,7 +107,7 @@ export default function ProjectDetailPage() {
 
       <CTASection
         title={`Interested in ${project.name}?`}
-        text="Ask for availability, brochure details, and a personalised consultation around this sample project opportunity."
+        text="Ask for availability, brochure details, and a personalised consultation around this property opportunity."
         primaryLabel="Enquire now"
         primaryTo="/contact"
         secondaryLabel="Call us"
