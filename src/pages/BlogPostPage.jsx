@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import SectionHeading from '../components/SectionHeading'
 import CTASection from '../components/CTASection'
 import { useContent } from '../context/ContentContext'
@@ -8,11 +8,21 @@ export default function BlogPostPage() {
   const { slug } = useParams()
   const { blogPosts } = useContent()
   const post = blogPosts.find((item) => item.slug === slug) || blogPosts[0]
+  const articleSchema = {
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    datePublished: post.publishedAt,
+    author: { '@type': 'Organization', name: 'Vikas U Desai Real Estate & Finance Consultancy' },
+    publisher: { '@type': 'Organization', name: 'Vikas U Desai Real Estate & Finance Consultancy' },
+  }
 
   return (
     <PageShell
       title={`${post.title} | Vikas U Desai Real Estate Insights`}
       description={post.excerpt}
+      schema={articleSchema}
     >
       <main className="page-shell container post-page">
       <article className="card article-card">
@@ -29,6 +39,16 @@ export default function BlogPostPage() {
           <p>
             This type of local guidance is especially useful for people evaluating new projects, resale homes, or long-term investment options. A well-informed decision is easier to make when the local market context is considered alongside your personal priorities.
           </p>
+          <nav className="article-related-links" aria-label="Related resources">
+            <h2>Related resources</h2>
+            <ul>
+              <li><Link to="/properties">Browse current properties</Link></li>
+              <li><Link to="/projects">Explore new projects</Link></li>
+              <li><Link to="/services">See property and finance services</Link></li>
+              <li><Link to="/contact">Talk to a local property consultant</Link></li>
+              <li><Link to="/blog">More property insights</Link></li>
+            </ul>
+          </nav>
         </div>
       </article>
 

@@ -1,11 +1,14 @@
 import ProjectCard from '../components/ProjectCard'
 import SectionHeading from '../components/SectionHeading'
 import { useContent } from '../context/ContentContext'
+import PageShell from './PageShell'
+import { Link } from 'react-router-dom'
 
 export default function ProjectsPage() {
   const { projects } = useContent()
   return (
-    <main className="page-shell container">
+    <PageShell title="Projects & New Launches | Vikas U Desai" description="Explore current project opportunities and new launches in Mira Road East and nearby areas.">
+      <main className="page-shell container">
       <SectionHeading
         eyebrow="Projects"
         title="Current project opportunities and upcoming launches."
@@ -17,6 +20,11 @@ export default function ProjectsPage() {
           <ProjectCard key={project.id} project={project} />
         ))}
       </div>
-    </main>
+      <nav className="detail-section" aria-label="Related project guidance">
+        <h2>Continue exploring</h2>
+        <p><Link to="/properties">Browse available properties</Link> · <Link to="/services">Compare consultancy services</Link> · <Link to="/blog">Read property insights</Link> · <Link to="/contact">Discuss a project</Link></p>
+      </nav>
+      </main>
+    </PageShell>
   )
 }

@@ -9,6 +9,14 @@ export default function CTASection({
   secondaryLabel,
   secondaryTo,
 }) {
+  const renderLink = (label, destination, className, includeArrow = true) => {
+    const isExternal = /^(https?:|tel:|mailto:)/i.test(destination)
+    const content = <>{label}{includeArrow && <> <ArrowRight size={16} /></>}</>
+    return isExternal
+      ? <a href={destination} className={className} target={destination.startsWith('https:') ? '_blank' : undefined} rel={destination.startsWith('https:') ? 'noreferrer' : undefined}>{content}</a>
+      : <Link to={destination} className={className}>{content}</Link>
+  }
+
   return (
     <section className="cta-section">
       <div className="container cta-shell card">
@@ -18,13 +26,9 @@ export default function CTASection({
         </div>
         <p>{text}</p>
         <div className="cta-actions">
-          <Link to={primaryTo} className="primary-button">
-            {primaryLabel} <ArrowRight size={16} />
-          </Link>
+          {renderLink(primaryLabel, primaryTo, 'primary-button')}
           {secondaryLabel && secondaryTo ? (
-            <Link to={secondaryTo} className="secondary-button">
-              {secondaryLabel}
-            </Link>
+            renderLink(secondaryLabel, secondaryTo, 'secondary-button', false)
           ) : null}
         </div>
       </div>

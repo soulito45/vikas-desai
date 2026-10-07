@@ -12,8 +12,8 @@ export default function WhatsAppButton({ title = 'Property', phone = '9199201333
         body: JSON.stringify({ title, source: 'floating-whatsapp-button' }),
       })
       trackLead('whatsapp', { title })
-    } catch (error) {
-      console.error('WhatsApp lead logging failed:', error)
+    } catch {
+      // The external WhatsApp link should still open if lead logging is unavailable.
     }
   }
 

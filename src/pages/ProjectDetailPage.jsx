@@ -3,14 +3,27 @@ import { useParams } from 'react-router-dom'
 import ImageGallery from '../components/ImageGallery'
 import CTASection from '../components/CTASection'
 import { useContent } from '../context/ContentContext'
+import PageShell from './PageShell'
 
 export default function ProjectDetailPage() {
   const { id } = useParams()
   const { projects } = useContent()
   const project = projects.find((item) => item.id === id) || projects[0]
+  const projectSchema = {
+    '@type': 'RealEstateListing',
+    name: project.name,
+    description: project.overview,
+    address: { '@type': 'PostalAddress', addressLocality: project.location, addressRegion: 'Maharashtra', addressCountry: 'IN' },
+    offers: { '@type': 'Offer', price: Number((Number(project.startingPrice.match(/[\d.]+/)?.[0] || 0) * (project.startingPrice.toLowerCase().includes('cr') ? 10000000 : 100000)).toFixed(0)), priceCurrency: 'INR', availability: 'https://schema.org/InStock' },
+  }
 
   return (
-    <main className="page-shell container project-detail-page">
+    <PageShell
+      title={`${project.name} | Vikas U Desai`}
+      description={`${project.name} project details, location, configuration, pricing, amenities, and availability in ${project.location}.`}
+      schema={projectSchema}
+    >
+      <main className="page-shell container project-detail-page">
       <section className="detail-hero card project-hero">
         <div className="detail-media">
           <img src={project.image} alt={project.name} />
@@ -90,7 +103,14 @@ export default function ProjectDetailPage() {
 
       <section className="detail-section">
         <h2>Location / map</h2>
-        <div className="map-placeholder card">Map placeholder — add a Google Maps embed or location pin later.</div>
+        <div className="map-card card">
+          <iframe
+            title={`Map for ${project.name}`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(project.location)}&output=embed`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </section>
 
       <section className="detail-section">
@@ -113,6 +133,7 @@ export default function ProjectDetailPage() {
         secondaryLabel="Call us"
         secondaryTo="tel:09920133345"
       />
-    </main>
+      </main>
+    </PageShell>
   )
 }

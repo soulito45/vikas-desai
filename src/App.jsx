@@ -17,6 +17,10 @@ import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
 import ContactPage from './pages/ContactPage'
 import AdminDashboardPage from './pages/AdminDashboardPage'
+import PrivacyPage from './pages/PrivacyPage'
+import FaqPage from './pages/FaqPage'
+import NotFoundPage from './pages/NotFoundPage'
+import ThankYouPage from './pages/ThankYouPage'
 import { ContentProvider } from './context/ContentContext'
 
 function AppShell() {
@@ -39,7 +43,11 @@ function AppShell() {
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<BlogPostPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/privacy" element={<PrivacyPage />} />
+        <Route path="/faq" element={<FaqPage />} />
+        <Route path="/thank-you" element={<ThankYouPage />} />
         <Route path="/admin" element={<AdminDashboardPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       {!isAdminRoute && <WhatsAppButton title="Vikas U Desai Real Estate & Finance Consultancy" />}
       {!isAdminRoute && <Footer />}

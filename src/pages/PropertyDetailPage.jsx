@@ -3,14 +3,27 @@ import { useParams } from 'react-router-dom'
 import ImageGallery from '../components/ImageGallery'
 import CTASection from '../components/CTASection'
 import { useContent } from '../context/ContentContext'
+import PageShell from './PageShell'
 
 export default function PropertyDetailPage() {
   const { id } = useParams()
   const { properties } = useContent()
   const property = properties.find((item) => item.id === id) || properties[0]
+  const propertySchema = {
+    '@type': 'RealEstateListing',
+    name: property.title,
+    description: property.description,
+    address: { '@type': 'PostalAddress', addressLocality: property.location, addressRegion: 'Maharashtra', addressCountry: 'IN' },
+    offers: { '@type': 'Offer', price: Number((Number(property.price.match(/[\d.]+/)?.[0] || 0) * (property.price.toLowerCase().includes('cr') ? 10000000 : 100000)).toFixed(0)), priceCurrency: 'INR', availability: 'https://schema.org/InStock' },
+  }
 
   return (
-    <main className="page-shell container property-detail-page">
+    <PageShell
+      title={`${property.title} | Vikas U Desai`}
+      description={`${property.title} details, location, pricing, configuration, and availability in ${property.location}.`}
+      schema={propertySchema}
+    >
+      <main className="page-shell container property-detail-page">
       <section className="detail-hero card">
         <div className="detail-media">
           <img src={property.image} alt={property.title} />
@@ -69,7 +82,14 @@ export default function PropertyDetailPage() {
 
       <section className="detail-section">
         <h2>Location</h2>
-        <div className="map-placeholder card">Map placeholder — add Google Maps embed or location pin later.</div>
+        <div className="map-card card">
+          <iframe
+            title={`Map for ${property.title}`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(property.location)}&output=embed`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+        </div>
       </section>
 
       <CTASection
@@ -78,6 +98,7 @@ export default function PropertyDetailPage() {
         primaryLabel="WhatsApp now"
         primaryTo="https://wa.me/919920133345"
       />
-    </main>
+      </main>
+    </PageShell>
   )
 }

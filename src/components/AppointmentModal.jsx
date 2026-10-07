@@ -8,6 +8,7 @@ const initialState = {
   preferredDate: '',
   preferredTime: '',
   purpose: 'Property consultation',
+  website: '',
 }
 
 export default function AppointmentModal() {
@@ -103,6 +104,8 @@ export default function AppointmentModal() {
               <option value="Finance guidance">Finance guidance</option>
             </select>
           </label>
+
+          <input type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true" value={formData.website} onChange={handleChange} />
 
           <button type="submit" className="primary-button" disabled={isSubmitting}>
             {isSubmitting ? 'Booking...' : 'Confirm appointment'}

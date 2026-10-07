@@ -2,11 +2,13 @@ import SectionHeading from '../components/SectionHeading'
 import ServiceCard from '../components/ServiceCard'
 import CTASection from '../components/CTASection'
 import { useContent } from '../context/ContentContext'
+import PageShell from './PageShell'
 
 export default function ServicesPage() {
   const { services } = useContent()
   return (
-    <main className="page-shell container">
+    <PageShell title="Property & Finance Services | Vikas U Desai" description="Property consultation, resale guidance, project support, commercial advice, financing, and investment support in Mira Road East.">
+      <main className="page-shell container">
       <SectionHeading
         eyebrow="Services"
         title="Consultancy support across every step of your property journey."
@@ -25,6 +27,7 @@ export default function ServicesPage() {
         primaryLabel="Book a consultation"
         primaryTo="/contact"
       />
-    </main>
+      </main>
+    </PageShell>
   )
 }

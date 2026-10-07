@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { apiRequest } from '../services/api'
 import { trackLead } from '../utils/analytics'
 
@@ -9,9 +10,11 @@ const initialState = {
   propertyType: 'Residential',
   budget: '',
   message: '',
+  website: '',
 }
 
 export default function EnquiryForm() {
+  const navigate = useNavigate()
   const [submitted, setSubmitted] = useState(false)
   const [formData, setFormData] = useState(initialState)
   const [error, setError] = useState('')
@@ -26,15 +29,15 @@ export default function EnquiryForm() {
     setError('')
 
     try {
-      const response = await apiRequest('/enquiries', {
+      await apiRequest('/enquiries', {
         method: 'POST',
         body: JSON.stringify(formData),
       })
 
-      trackLead('enquiry-form', formData)
+      trackLead('enquiry-form')
       setSubmitted(true)
       setFormData(initialState)
-      console.log('Enquiry submitted:', response)
+      navigate('/thank-you')
     } catch (submitError) {
       setError(submitError.message || 'Unable to submit enquiry right now.')
     }
@@ -84,6 +87,7 @@ export default function EnquiryForm() {
           <span>Message</span>
           <textarea name="message" value={formData.message} onChange={handleChange} rows="4" />
         </label>
+        <input type="text" name="website" tabIndex="-1" autoComplete="off" aria-hidden="true" value="" readOnly />
       </div>
 
       <button type="submit" className="primary-button">Submit Enquiry</button>

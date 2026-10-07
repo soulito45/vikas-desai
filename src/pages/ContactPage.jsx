@@ -22,14 +22,11 @@ export default function ContactPage() {
           <ContactCard />
           <div className="card business-hours">
             <h3>Business hours</h3>
-            <ul>
-              <li><Clock3 size={16} /> Monday to Saturday</li>
-              <li><Clock3 size={16} /> By appointment</li>
-            </ul>
+            <ul><li><Clock3 size={16} /> Monday to Saturday</li><li><Clock3 size={16} /> By appointment</li></ul>
           </div>
           <div className="card map-card">
             <h3>Location</h3>
-            <div className="map-placeholder">Local office support for buyers and sellers across Mira Road East, Kashimira, and surrounding areas.</div>
+            <iframe title="Vikas U Desai office location" src="https://www.google.com/maps?q=Vikas+U+Desai+Real+Estate+Finance+Consultancy+Mira+Road+East&output=embed" loading="lazy" referrerPolicy="no-referrer-when-downgrade" />
           </div>
         </div>
 

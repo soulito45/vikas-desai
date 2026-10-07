@@ -13,7 +13,7 @@ export default function ProjectCard({ project }) {
         <div className="info-row"><MapPin size={16} /> {project.location}</div>
         <div className="info-row"><Tag size={16} /> {project.configuration}</div>
         <div className="price-line">Starting from {project.startingPrice}</div>
-        <Link to={`/projects/${project.slug}`} className="text-link">
+        <Link to={`/projects/${project.id}`} className="text-link">
           View project <ArrowRight size={16} />
         </Link>
       </div>

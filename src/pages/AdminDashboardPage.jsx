@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { adminSeed } from '../data/adminSeed'
 import { apiRequest } from '../services/api'
 
-const tabs = ['Projects', 'Properties', 'Blog Posts', 'Reviews', 'Services', 'Appointments']
+const tabs = ['Projects', 'Properties', 'Blog Posts', 'Reviews', 'Services', 'Appointments', 'Leads', 'Enquiries']
 
 const blankProperty = {
   id: '',
@@ -29,7 +29,7 @@ export default function AdminDashboardPage() {
   const [data, setData] = useState(adminSeed)
   const [loading, setLoading] = useState(true)
   const [authenticated, setAuthenticated] = useState(false)
-  const [username, setUsername] = useState('admin')
+  const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
@@ -43,7 +43,9 @@ export default function AdminDashboardPage() {
         setAuthenticated(true)
         const content = await apiRequest('/admin/content')
         const appointments = await apiRequest('/appointments')
-        setData({ ...content, appointments })
+        const leads = await apiRequest('/leads')
+        const enquiries = await apiRequest('/enquiries')
+        setData({ ...content, appointments, leads, enquiries })
       } catch (err) {
         if (!err.message.includes('401')) setError('Backend unavailable. Please try again later.')
       } finally {
@@ -62,7 +64,9 @@ export default function AdminDashboardPage() {
       await apiRequest('/admin/login', { method: 'POST', body: JSON.stringify({ username, password }) })
       const content = await apiRequest('/admin/content')
       const appointments = await apiRequest('/appointments')
-      setData({ ...content, appointments })
+      const leads = await apiRequest('/leads')
+      const enquiries = await apiRequest('/enquiries')
+      setData({ ...content, appointments, leads, enquiries })
       setPassword('')
       setAuthenticated(true)
     } catch (err) {
@@ -100,16 +104,44 @@ export default function AdminDashboardPage() {
     setError('')
 
     try {
-      const { appointments: _appointments, ...contentPayload } = data
+      const { appointments, leads, enquiries, ...contentPayload } = data
       await apiRequest('/admin/content', {
         method: 'PUT',
         body: JSON.stringify(contentPayload),
       })
-    } catch (err) {
-      console.error('Failed to save admin content:', err)
+    } catch {
       setError('Could not save to backend. Changes are only local in this session.')
     } finally {
       setSaving(false)
+    }
+  }
+
+  const updateLead = async (lead, status, notes) => {
+    try {
+      await apiRequest(`/leads/${lead.id}`, { method: 'PUT', body: JSON.stringify({ status, notes }) })
+      setData((current) => ({
+        ...current,
+        leads: (current.leads || []).map((item) => item.id === lead.id ? { ...item, status, notes } : item),
+      }))
+    } catch (err) {
+      setError(err.message || 'Unable to update lead.')
+    }
+  }
+
+  const moderateReview = async (review, approved) => {
+    try {
+      await apiRequest(`/reviews/${review.id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ approved }),
+      })
+      setData((current) => ({
+        ...current,
+        reviews: (current.reviews || []).map((item) => item.id === review.id
+          ? { ...item, approved, status: approved ? 'approved' : 'rejected' }
+          : item),
+      }))
+    } catch (err) {
+      setError(err.message || 'Unable to moderate review.')
     }
   }
 
@@ -140,8 +172,7 @@ export default function AdminDashboardPage() {
         method: 'PUT',
         body: JSON.stringify(contentPayload),
       })
-    } catch (err) {
-      console.error('Failed to save new property:', err)
+    } catch {
       setError('Property was added locally, but saving to the backend failed.')
     }
   }
@@ -219,6 +250,26 @@ export default function AdminDashboardPage() {
           </div>
           <button type="submit" className="primary-button">Create property</button>
         </form>
+      )}
+
+      {activeTab === 'Leads' && <div className="admin-grid">{currentItems.map((lead) => <div className="card admin-card" key={lead.id}><h3>{lead.title || lead.name || lead.source}</h3><p>{lead.phone || lead.message || ''}</p><div className="form-grid"><label><span>Status</span><select value={lead.status || 'new'} onChange={(event) => updateLead(lead, event.target.value, lead.notes || '')}><option value="new">New</option><option value="qualified">Qualified</option><option value="contacted">Contacted</option><option value="consultation">Consultation</option><option value="proposal">Proposal</option><option value="closed">Closed</option><option value="rejected">Rejected</option></select></label><label><span>Notes</span><textarea rows="3" value={lead.notes || ''} onChange={(event) => setData((current) => ({ ...current, leads: (current.leads || []).map((item) => item.id === lead.id ? { ...item, notes: event.target.value } : item) }))} /></label></div><button className="secondary-button" type="button" onClick={() => updateLead(lead, lead.status || 'new', lead.notes || '')}>Save lead</button></div>)}</div>}
+
+      {activeTab === 'Enquiries' && <div className="admin-grid">{currentItems.map((enquiry) => <div className="card admin-card" key={enquiry.id}><h3>{enquiry.name}</h3><p>{enquiry.phone} · {enquiry.requirement} · {enquiry.propertyType}</p><p>{enquiry.message || enquiry.budget || ''}</p><small>{enquiry.createdAt}</small></div>)}</div>}
+
+      {activeTab === 'Reviews' && (
+        <div className="admin-grid">
+          {currentItems.map((review) => (
+            <div className="card admin-card" key={review.id}>
+              <h3>{review.author}</h3>
+              <p>{review.quote}</p>
+              <p>Rating: {review.rating}/5 · Status: {review.status || 'pending'}</p>
+              <div className="admin-actions-inline">
+                <button type="button" className="primary-button" onClick={() => moderateReview(review, true)}>Approve</button>
+                <button type="button" className="secondary-button" onClick={() => moderateReview(review, false)}>Reject</button>
+              </div>
+            </div>
+          ))}
+        </div>
       )}
 
       <div className="admin-grid">
